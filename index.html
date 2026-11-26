@@ -720,36 +720,7 @@ let mode = 'dynamic';
 
     document.getElementById('scale-marker').style.left = scalePos(Re) + '%';
 
-    // steps
-    let stepsHTML = '';
-    if (mode === 'dynamic') {
-      stepsHTML = `
-        <div class="step"><div class="step-num">01</div><div class="step-text">
-          Identify inputs: <span class="val">v = ${fmtNum(v)} m/s</span>, <span class="val">L = ${fmtNum(L)} m</span>, <span class="val">ρ = ${fmtNum(rho)} kg/m³</span>, <span class="val">μ = ${fmtNum(mu)} Pa·s</span>
-        </div></div>
-        <div class="step"><div class="step-num">02</div><div class="step-text">
-          Compute numerator: <span class="eq">ρ × v × L</span> = ${fmtNum(rho)} × ${fmtNum(v)} × ${fmtNum(L)} = <span class="val">${fmtNum(rho*v*L)}</span>
-        </div></div>
-        <div class="step"><div class="step-num">03</div><div class="step-text">
-          Divide by dynamic viscosity: <span class="eq">${fmtNum(rho*v*L)} / ${fmtNum(mu)}</span> = <span class="val">Re = ${fmtRe(Re)}</span>
-        </div></div>
-        <div class="step"><div class="step-num">04</div><div class="step-text">
-          Kinematic viscosity derived: <span class="eq">ν = μ/ρ</span> = ${fmtNum(mu)} / ${fmtNum(rho)} = <span class="val">${fmtNum(nu)} m²/s</span>
-        </div></div>
-      `;
-    } else {
-      stepsHTML = `
-        <div class="step"><div class="step-num">01</div><div class="step-text">
-          Identify inputs: <span class="val">v = ${fmtNum(v)} m/s</span>, <span class="val">L = ${fmtNum(L)} m</span>, <span class="val">ν = ${fmtNum(nu)} m²/s</span>
-        </div></div>
-        <div class="step"><div class="step-num">02</div><div class="step-text">
-          Apply formula: <span class="eq">Re = (v × L) / ν</span> = (${fmtNum(v)} × ${fmtNum(L)}) / ${fmtNum(nu)}
-        </div></div>
-        <div class="step"><div class="step-num">03</div><div class="step-text">
-          Result: <span class="val">Re = ${fmtRe(Re)}</span>
-        </div></div>
-      `;
-    }
+
     document.getElementById('steps-content').innerHTML = `<div class="steps-title">// step-by-step workings</div>` + stepsHTML;
 
     // insight
